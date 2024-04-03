@@ -11,14 +11,16 @@ class CreateGuestUser extends CreateUserService
     /**
      * @param string $name
      * @param string $email
+     * @param string $password
      * @return User
      * @throws Exception
      */
-    public function create(string $name,string $email) :User
+    public function create(string $name,string $email,string $password) :User
     {
         return $this
             ->setEmail($email)
             ->setName($name)
+            ->setPassword($password)
             ->save();
     }
 }

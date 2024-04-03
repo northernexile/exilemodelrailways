@@ -29,10 +29,11 @@ class CreateAdminUser extends Command
         $response = Command::FAILURE;
         try {
             $user = $adminUser
-                ->setEmail($this->input->getArgument('email'))
-                ->setName($this->input->getArgument('name'))
-                ->setPassword($this->input->getArgument('password'));
-
+                ->create(
+                    $this->input->getArgument('name'),
+                    $this->input->getArgument('email'),
+                    $this->input->getArgument('password'),
+                );
             if(!$user) {
                 throw new \Exception('User not created');
             }
