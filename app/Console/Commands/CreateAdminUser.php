@@ -11,7 +11,7 @@ class CreateAdminUser extends Command
      *
      * @var string
      */
-    protected $signature = 'app:create:admin:user {name} {email}';
+    protected $signature = 'app:create:admin:user {name} {email} {password}';
 
     /**
      * The console command description.
@@ -30,7 +30,8 @@ class CreateAdminUser extends Command
         try {
             $user = $adminUser
                 ->setEmail($this->input->getArgument('email'))
-                ->setName($this->input->getArgument('name'));
+                ->setName($this->input->getArgument('name'))
+                ->setPassword($this->input->getArgument('password'));
 
             if(!$user) {
                 throw new \Exception('User not created');
